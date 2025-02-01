@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -89,7 +90,9 @@ class SignInProvider extends ChangeNotifier {
   Future<void> googleSignOutOnPressed() async {
     try {
       await googleSignIn.signOut();
-      print("logout google ");
+      if (kDebugMode) {
+        print("logout google ");
+      }
       navigateToExitScreen();
       navigateToExitScreen();
     } catch (e) {
@@ -114,7 +117,7 @@ class SignInProvider extends ChangeNotifier {
       String code ;
       int? codeId ;
       await authFirebase.verifyPhoneNumber(   //  7694034029
-        phoneNumber: "+919627741879",
+        phoneNumber: "+91",
         timeout: const Duration(seconds: 60),
         forceResendingToken: 0,
         // autoRetrievedSmsCodeForTesting: "123456",
@@ -123,7 +126,7 @@ class SignInProvider extends ChangeNotifier {
           enrollmentTimestamp: 0.8,
           factorId: '',
           uid: '',
-          phoneNumber: '+919627741879',
+          phoneNumber: '+91',
         ),
         verificationCompleted: (_) {
           print("verificationCompleted : ${_.verificationId} , code : ${_.smsCode} , token : ${_.accessToken}");

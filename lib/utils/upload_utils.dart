@@ -22,7 +22,7 @@ class _UploadUtilsState extends State<UploadUtils> {
       padding: const EdgeInsets.all(10),
       elevation: 6,
       onPressed: () async {
-        gs: //my-project-social-integration.appspot.com
+        // gs: //my-project-social-integration.appspot.com
         var inst = FirebaseStorage.instance;
 
         var file = File("${widget.checkedFileList[0].path.split(".png")[0]}.mp4");

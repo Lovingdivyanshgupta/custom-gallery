@@ -168,27 +168,27 @@ class _SocialSignInScreenState extends State<SocialSignInScreen> {
   }
 
   void _loadAd2() async {
-    // final bannerAd = await InterstitialAd.load(
-    //   adUnitId: adUnitId2,
-    //   request: const AdRequest(),
-    //   adLoadCallback: InterstitialAdLoadCallback(
-    //     // Called when an ad is successfully received.
-    //     onAdLoaded: (ad) {
-    //       if (!mounted) {
-    //         ad.dispose();
-    //         return;
-    //       }
-    //       setState(() {
-    //         _bannerAd2 = ad;
-    //       });
-    //     },
-    //     // Called when an ad request failed.
-    //     onAdFailedToLoad: (error) {
-    //       debugPrint('InterstitialAd failed to load: $error');
-    //       // ad.dispose();
-    //     },
-    //   ),
-    // );
+     await InterstitialAd.load(
+      adUnitId: adUnitId2,
+      request: const AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        // Called when an ad is successfully received.
+        onAdLoaded: (ad) {
+          if (!mounted) {
+            ad.dispose();
+            return;
+          }
+          setState(() {
+            _bannerAd2 = ad;
+          });
+        },
+        // Called when an ad request failed.
+        onAdFailedToLoad: (error) {
+          debugPrint('InterstitialAd failed to load: $error');
+          // ad.dispose();
+        },
+      ),
+    );
 
     // Start loading.
     // bannerAd.load();
