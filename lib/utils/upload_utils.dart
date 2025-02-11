@@ -26,11 +26,11 @@ class _UploadUtilsState extends State<UploadUtils> {
         var inst = FirebaseStorage.instance;
 
         var file = File("${widget.checkedFileList[0].path.split(".png")[0]}.mp4");
-        print("object : ${file.path} : ${file.existsSync()}  : ${file.path.split("Files/")[1]}");
+        // print("object : ${file.path} : ${file.existsSync()}  : ${file.path.split("Files/")[1]}");
 
         try {
           final ref = inst.ref("Video").child(file.path.split("Files/")[1]);
-          print("object : ${ref.name}");
+          // print("object : ${ref.name}");
           final upload = await ref
               .putFile(
             file,
@@ -43,7 +43,7 @@ class _UploadUtilsState extends State<UploadUtils> {
 
           if(upload.state == TaskState.running){
             var progress = (upload.bytesTransferred/upload.totalBytes)*100;
-            print("progress : $progress");
+            // print("progress : $progress");
             setState(() {
               inProgress = progress ;
             });
@@ -52,7 +52,7 @@ class _UploadUtilsState extends State<UploadUtils> {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Upload Successfully.")));
           // Navigator.pop(context);
         } catch (e) {
-          print("error occurred : $e");
+          // print("error occurred : $e");
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error Occurred : $e.")));
         }
       },

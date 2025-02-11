@@ -23,7 +23,7 @@ class _VideoPreviewState extends State<VideoPreview> {
       ..initialize().then((value) {
         setState(() {});
       }).catchError((Object e) {
-        print('catch error : ${e.toString()}');
+        // print('catch error : ${e.toString()}');
       });
   }
 
@@ -61,10 +61,10 @@ class _VideoPreviewState extends State<VideoPreview> {
                   onPressed: () async {
                     try {
                       await videoPlayerController!.play();
-                      print("video played started .");
+                      // print("video played started .");
                       setState(() {});
                     } catch (e) {
-                      print("error : $e");
+                      // print("error : $e");
                     }
                   },
                   icon: const Icon(
@@ -78,10 +78,10 @@ class _VideoPreviewState extends State<VideoPreview> {
                         onPressed: () async {
                           try {
                             await videoPlayerController!.pause();
-                            print("video played paused .");
+                            // print("video played paused .");
                             setState(() {});
                           } catch (e) {
-                            print("error : $e");
+                            // print("error : $e");
                           }
                         },
                         icon: const Icon(

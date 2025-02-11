@@ -41,10 +41,10 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
   void initializeAvailableCamera() async {
     camera = await availableCameras();
     if (camera.isEmpty) {
-      print("camera empty");
+      // print("camera empty");
       camera = await availableCameras();
     } else {
-      print("camera list: $camera ");
+      // print("camera list: $camera ");
     }
   }
 
@@ -53,7 +53,7 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     initializeAvailableCamera();
-    print("list of cameras : $camera");
+    // print("list of cameras : $camera");
     initializeCameraController(switchCameraLensValue: lensDirectionValue);
   }
 
@@ -67,12 +67,12 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
       imageFormatGroup: (Platform.isAndroid) ? ImageFormatGroup.jpeg : ImageFormatGroup.bgra8888,
     );
 
-    print("cameraController : ${cameraController!.description}");
-    print("cameraController : ${cameraController!.cameraId}");
-    print("cameraController : ${cameraController!.value}");
+    // print("cameraController : ${cameraController!.description}");
+    // print("cameraController : ${cameraController!.cameraId}");
+    // print("cameraController : ${cameraController!.value}");
     await cameraController!.initialize().then(
       (value) {
-        print("then init : ${cameraController!.cameraId}");
+        // print("then init : ${cameraController!.cameraId}");
         if (!mounted) {
           return;
         }
@@ -80,10 +80,10 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
       },
     ).catchError((Object e) {
       if (e is CameraException) {
-        print("camera exception : ${e.description}");
-        print("camera exception : ${e.code}");
+        // print("camera exception : ${e.description}");
+        // print("camera exception : ${e.code}");
       } else {
-        print('@ error occurred : ${e.toString()}');
+        // print('@ error occurred : ${e.toString()}');
       }
     });
   }
@@ -198,21 +198,21 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
     } else {
       data = await getDownloadsDirectory();
     }
-    print("getApplication path : ${data!.path}");
+    // print("getApplication path : ${data!.path}");
     var time = DateTime.now().millisecondsSinceEpoch.toString();
-    mediaFilesDir = "${data.path}/Media Files/";
+    mediaFilesDir = "${data?.path}/Media Files/";
     await Directory(mediaFilesDir).create(recursive: true);
 
     var path = (extension == 'mp4') ? "${mediaFilesDir}video$time.$extension" : "${mediaFilesDir}image_$time.$extension";
-    print("dir path @@ : $path");
+    // print("dir path @@ : $path");
     return path;
   }
 
   void captureImageOnPressed() async {
-    print("camera capturing");
+    // print("camera capturing");
     try {
       imageFile = await cameraController!.takePicture();
-      print("imageFile path : ${imageFile!.path}");
+      // print("imageFile path : ${imageFile!.path}");
 
       var path = await retrievingPathForStorage('jpeg');
       await imageFile!.saveTo(path);
@@ -246,7 +246,7 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
   }
 
   void startRecordingVideoOnPressed() async {
-    print("camera video capturing started .");
+    // print("camera video capturing started .");
     isVideoRecording = !isVideoRecording;
     setTimerCountDown();
     if (cameraController!.value.isRecordingVideo) {
@@ -258,12 +258,12 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
       await cameraController!.startVideoRecording();
       setState(() {});
     } catch (e) {
-      print("stop video : $e");
+      // print("stop video : $e");
     }
   }
 
   void stopRecordingVideoOnPressed() async {
-    print("camera video stopped .");
+    // print("camera video stopped .");
     if (!cameraController!.value.isRecordingVideo) {
       // A recording is already started, do nothing.
       return;
@@ -274,7 +274,7 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
 
     try {
       var file = await cameraController!.stopVideoRecording();
-      print("video stop file data : ${file.path}");
+      // print("video stop file data : ${file.path}");
 
       var path = await retrievingPathForStorage('mp4');
       await file.saveTo(path);
@@ -294,25 +294,25 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
   }
 
   void resumeRecordingVideoOnPressed() async {
-    print("camera video resume .");
+    // print("camera video resume .");
     isPaused = false;
     setTimerCountDown();
     try {
       await cameraController!.resumeVideoRecording();
-      print("video resume");
+      // print("video resume");
     } catch (e) {
-      print("stop video : $e");
+      // print("stop video : $e");
     }
   }
 
   void pauseRecordingVideoOnPressed() async {
-    print("camera video pause .");
+    // print("camera video pause .");
     isPaused = true;
     try {
       await cameraController!.pauseVideoRecording();
-      print("video pause");
+      // print("video pause");
     } catch (e) {
-      print("stop video : $e");
+      // print("stop video : $e");
     }
   }
 
@@ -324,14 +324,14 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
           try {
             if (isPaused) {
               tickValue = timer.tick + tickValue - 1;
-              print("tick value : $tickValue");
+              // print("tick value : $tickValue");
               timer.cancel();
             } else {
               if (timer.tick > 60) {
                 //timer.cancel();
                 inMinute = (timer.tick + tickValue) ~/ 60;
                 inMilliSecond = ((timer.tick + tickValue) % 60).toInt();
-                print("time in tick : $inMinute : $inMilliSecond");
+                // print("time in tick : $inMinute : $inMilliSecond");
               } else {
                 inMilliSecond = ((timer.tick + tickValue) % 60).toInt();
               }
@@ -339,7 +339,7 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
             hasOpacity = !hasOpacity;
             setState(() {});
           } catch (e) {
-            print("error occured : $e");
+            // print("error occured : $e");
           }
         },
       );
@@ -355,10 +355,10 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
       var thumbnail = await VideoThumbnail.thumbnailFile(
         video: path,
       );
-      print("thumbnail data : ${thumbnail?.length}");
-      print("thumbnail data ! : $thumbnail");
+      // print("thumbnail data : ${thumbnail?.length}");
+      // print("thumbnail data ! : $thumbnail");
     } catch (e) {
-      print('Thumbnail Error Occurred : $e');
+      // print('Thumbnail Error Occurred : $e');
     }
   }
 

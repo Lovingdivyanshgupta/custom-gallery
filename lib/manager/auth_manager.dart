@@ -96,26 +96,26 @@ class SignInProvider extends ChangeNotifier {
       navigateToExitScreen();
       navigateToExitScreen();
     } catch (e) {
-      print("logout google in error: ${e.toString()}");
+      // print("logout google in error: ${e.toString()}");
     }
   }
 
   Future<void> faceBookSignOutOnPressed() async {
     try {
       await authFacebook.logOut();
-      print("logoutFaceBook ");
+      // print("logoutFaceBook ");
       navigateToExitScreen();
       navigateToExitScreen();
     } catch (e) {
-      print("logoutFaceBook in error: ${e.toString()}");
+      // print("logoutFaceBook in error: ${e.toString()}");
     }
   }
 
   Future<void> signInPhone(BuildContext context) async {
     try {
-      print("signInPhone ");
-      String code ;
-      int? codeId ;
+      // print("signInPhone ");
+      // String code ;
+      // int? codeId ;
       await authFirebase.verifyPhoneNumber(   //  7694034029
         phoneNumber: "+91",
         timeout: const Duration(seconds: 60),
@@ -129,29 +129,29 @@ class SignInProvider extends ChangeNotifier {
           phoneNumber: '+91',
         ),
         verificationCompleted: (_) {
-          print("verificationCompleted : ${_.verificationId} , code : ${_.smsCode} , token : ${_.accessToken}");
+          // print("verificationCompleted : ${_.verificationId} , code : ${_.smsCode} , token : ${_.accessToken}");
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("verificationCompleted : ${_.verificationId} , code : ${_.smsCode} , token : ${_.accessToken}")));
         },
         verificationFailed: (e) {
-          print("verificationFailed : ${e.credential?.accessToken}");
-          print("verificationFailed : ${e.credential?.providerId}");
-          print("verificationFailed : ${e.credential?.signInMethod}");
-          print("verificationFailed : ${e.credential?.token}");
-          print("verificationFailed : ${e.email}");
-          print("verificationFailed : ${e.phoneNumber}");
-          print("verificationFailed : ${e.code}");
-          print("verificationFailed : ${e.plugin}");
-          print("verificationFailed : ${e.tenantId}");
+          // print("verificationFailed : ${e.credential?.accessToken}");
+          // print("verificationFailed : ${e.credential?.providerId}");
+          // print("verificationFailed : ${e.credential?.signInMethod}");
+          // print("verificationFailed : ${e.credential?.token}");
+          // print("verificationFailed : ${e.email}");
+          // print("verificationFailed : ${e.phoneNumber}");
+          // print("verificationFailed : ${e.code}");
+          // print("verificationFailed : ${e.plugin}");
+          // print("verificationFailed : ${e.tenantId}");
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("verificationFailed : ${e.message}")));
         },
         codeSent: (codeSent, i) {
-          print("codeSent : $codeSent , code : $i ");
+          // print("codeSent : $codeSent , code : $i ");
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("codeSent : $codeSent , code : $i ")));
-          code = codeSent;
-          codeId = i;
+          // code = codeSent;
+          // codeId = i;
         },
         codeAutoRetrievalTimeout: (c) {
-          print("codeAutoRetrievalTimeout : $c ");
+          // print("codeAutoRetrievalTimeout : $c ");
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("codeAutoRetrievalTimeout : $c ")));
         },
       );

@@ -39,7 +39,7 @@ class _CustomMediaManagerState extends State<CustomMediaManager> {
         }
       }
     } catch (e) {
-      print(e);
+      // print(e);
       return dir;
     }
     return dir;
@@ -90,7 +90,7 @@ class _CustomMediaManagerState extends State<CustomMediaManager> {
                     return InkWell(
                       onTap: () {
                         if (!isDelete) {
-                          print("navigate path ${e.path}");
+                          // /print("navigate path ${e.path}");
 
                           if (hasImage) {
                             Navigator.pushNamed(
@@ -100,7 +100,7 @@ class _CustomMediaManagerState extends State<CustomMediaManager> {
                             );
                           } else {
                             var joinPath = e.path.split('.png').join('.mp4');
-                            print("join : $joinPath");
+                            // print("join : $joinPath");
                             Navigator.pushNamed(
                               context,
                               Routes.videoPreview,
@@ -162,7 +162,7 @@ class _CustomMediaManagerState extends State<CustomMediaManager> {
                                 value: (checkedFileList.contains(e)),
                                 onChanged: (bool? check) {
                                   isChecked = check!;
-                                  print("is checked : $isChecked");
+                                  // print("is checked : $isChecked");
 
                                   if (checkedFileList.contains(e)) {
                                     var index = checkedFileList.indexOf(e);
@@ -170,7 +170,7 @@ class _CustomMediaManagerState extends State<CustomMediaManager> {
                                   } else {
                                     checkedFileList.add(e);
                                   }
-                                  print("checked index : $checkedFileList");
+                                  // print("checked index : $checkedFileList");
                                   setState(() {});
                                 },
                               ),
@@ -199,19 +199,19 @@ class _CustomMediaManagerState extends State<CustomMediaManager> {
   void deleteGridItemsOnPressed() async {
     if (isDelete) {
       for (var file in checkedFileList) {
-        print("files : $file");
+        // print("files : $file");
         try {
           await file.delete().then((value) {
             data.remove(file);
             setState(() {});
-            print("object delete is done.");
+            // print("object delete is done.");
           });
         } catch (e) {
-          print("error occurred in deletion");
+          // print("error occurred in deletion");
         }
       }
       isDelete = !isDelete;
-      print("files are deleted : $checkedFileList");
+      // print("files are deleted : $checkedFileList");
       checkedFileList.clear();
     }
   }
