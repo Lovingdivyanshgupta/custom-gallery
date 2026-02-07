@@ -16090,4 +16090,17 @@
 /build/webview_flutter_android/outputs/aar/webview_flutter_android-release.aar
 /build/webview_flutter_android/outputs/logs/manifest-merger-release-report.txt
 /build/webview_flutter_android/tmp/compileReleaseJavaWithJavac/previous-compilation-data.bin
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/.filecache
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/app.dill
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/debug_android_application.stamp
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/flutter_assets.d
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/gen_dart_plugin_registrant.stamp
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/gen_localizations.stamp
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/kernel_snapshot.d
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/kernel_snapshot.stamp
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/native_assets.d
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/native_assets.stamp
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/native_assets.yaml
+/.dart_tool/flutter_build/be7331385dab214c06c3fb5b11e22187/outputs.json
 /.idea/vcs.xml
+/.idea/workspace.xml
