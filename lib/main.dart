@@ -14,7 +14,7 @@ Future<void> main() async {
   unawaited(MobileAds.instance.initialize());
   await Firebase.initializeApp();
   camera = await availableCameras();
-  // print("camera main : $camera");
+  print("camera main : $camera");
   runApp(const MyApp());
 }
 

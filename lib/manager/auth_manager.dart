@@ -21,7 +21,7 @@ class SignInProvider extends ChangeNotifier {
 
   final FirebaseAuth authFirebase = FirebaseAuth.instance;
   final FacebookAuth authFacebook = FacebookAuth.instance;
-  final GoogleSignIn googleSignIn = GoogleSignIn();
+  final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
   Future<void> checkIfSignIn() async {
     SharedPreferences getSignIn = await SharedPreferences.getInstance();
@@ -31,7 +31,7 @@ class SignInProvider extends ChangeNotifier {
 
   Future<void> signInWithGoogleOnPressed() async {
     try {
-      GoogleSignInAccount? accountGoogle = await googleSignIn.signIn();
+      GoogleSignInAccount? accountGoogle = await googleSignIn.authenticate();
       if (accountGoogle != null) {
         //print("google sign data : ${accountGoogle.email}");
         //print("google sign data : ${accountGoogle.displayName}");
@@ -40,7 +40,7 @@ class SignInProvider extends ChangeNotifier {
       GoogleSignInAuthentication googleAuth = await accountGoogle!.authentication;
       AuthCredential googleAuthCredential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
-        accessToken: googleAuth.accessToken,
+        accessToken: googleAuth.idToken,
       );
       UserCredential googleUserCredential = await authFirebase.signInWithCredential(googleAuthCredential);
       User? googleUser = googleUserCredential.user;
