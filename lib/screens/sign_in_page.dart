@@ -224,6 +224,14 @@ class _SocialSignInScreenState extends State<SocialSignInScreen> {
       _bannerAd2!.show();
     } else {
       debugPrint('Ad is not loaded yet');
+       Navigator.pushNamed(
+        context,
+        Routes.myHomePage,
+        arguments: {
+          "type": SignInType.skip,
+          "object": {"email": "Guest@gmail.com", "name": "Login Now", "url": ""}
+        },
+      );
     }
   }
 }

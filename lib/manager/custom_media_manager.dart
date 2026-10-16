@@ -8,7 +8,7 @@ import '../app_helper/route.dart';
 import '../utils/upload_utils.dart';
 
 const String pathExternalStorageAndroid =
-    "/storage/emulated/0/Android/data/com.example.poc_custom_gallery/files/Media Files";
+    "/storage/emulated/0/Android/data/com.divyansh.customgallery/files/Media Files";
 const String pathExternalStorageIOS =
     "/var/mobile/Containers/Data/Application/F55EBAC6-5EAB-46FB-A8B6-9E856FED2538/Documents/Media Files";
 

@@ -216,14 +216,18 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
 
       var path = await retrievingPathForStorage('jpeg');
       await imageFile!.saveTo(path);
-      Future.delayed(const Duration(milliseconds: 300), () {
+      if(imageFile != null ){
+        var imageData = await BackgroundRemovalService().removeBackground(File(imageFile!.path)); // Replace with your image file path
+        print("@@@imageData : $imageData");
+        await imageFile?.saveTo(imageFile!.path);
+      }
+      Future.delayed(const Duration(milliseconds: 300), () async {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Image saved to $path'),
           ),
         );
-
-        Navigator.pushNamed(
+        await Navigator.pushNamed(
           context,
           Routes.imagePreview,
           arguments: {"path": path},
@@ -355,10 +359,10 @@ class _CameraServicePageState extends State<CameraServicePage> with WidgetsBindi
       var thumbnail = await VideoThumbnail.thumbnailFile(
         video: path,
       );
-      // print("thumbnail data : ${thumbnail?.length}");
-      // print("thumbnail data ! : $thumbnail");
+      print("thumbnail data : ${thumbnail?.length}");
+      print("thumbnail data ! : $thumbnail");
     } catch (e) {
-      // print('Thumbnail Error Occurred : $e');
+      print('Thumbnail Error Occurred : $e');
     }
   }
 

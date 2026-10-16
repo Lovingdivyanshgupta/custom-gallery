@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "539328325557",
+    "firebase_url": "https://my-project-social-integration-default-rtdb.firebaseio.com",
+    "project_id": "my-project-social-integration",
+    "storage_bucket": "my-project-social-integration.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539328325557:android:19193e238a8724c25d9bfc",
+        "android_client_info": {
+          "package_name": "com.divyansh.customgallery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539328325557-r8pmsiicvn0gh79nku73om7r0pq80fd0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.divyansh.customgallery",
+            "certificate_hash": "61cdb291baa6f22b212b6c4ac5e5f1525ce450d7"
+          }
+        },
+        {
+          "client_id": "539328325557-tldj3mrs96ndg3oh93f1vgp65ufii9b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvBUdSIxxOuUIqR9FnydBf47XXwi4LdEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539328325557-t61btas36s4m1pc234l8u7fer4ld52bf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "539328325557-otqdom93v4mgdhm4eikg5mkkcb616h7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.my.crmnext.ChattingApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
